@@ -1,17 +1,21 @@
 name: Django Tests
 
-on push, pull_request:
+on:
+  push:
+    branches: [main]
+  pull_request:
     branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    step:
+    steps:
     - uses: actions/checkout@v2
     - name: Set up python 3.7
       uses: actions/setup-python@v2
-      with: python-version: 3.11
+      with:
+        python-version: 3.11
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
